@@ -6,3 +6,4 @@ strengths-of-tidyverse
 data-import
 data-wrangling
 maintain-the-tidyverse
+references
