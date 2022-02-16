@@ -1,4 +1,4 @@
-book_filename: "tidyverse-learnings"
+book_filename: "tidyverse_learnings"
 output_dir: "docs"
 delete_merged_file: true
 #edit: https://github.com/canaytore/tidyverse-learnings/edit/master/%s
