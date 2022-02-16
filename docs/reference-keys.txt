@@ -7,4 +7,3 @@ data-import
 data-wrangling
 maintain-the-tidyverse
 the-pool-of-tears
-a-caucus-race-and-a-long-tale
