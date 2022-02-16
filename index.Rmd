@@ -17,7 +17,7 @@ head(iris[iris$Species == "virginica",])
 
 First to access to 'species' column and then we have a double equals to say 'species' is equivalent to 'virginica' and then we have a comma to say we want all of the columns and then the final closing square bracket. 
 
-# R Packages
+## R Packages
 
 It's possible to do every single thing you could possibly imagine with Base-R because it is a true and complete programming language but you would have to write a lot of code yourself. Most people jump straight into using R packages to make their life easier and more reproducible, so what are R packages? R packages are self-contained collections of functions and/or datasets that provide us with the ability to do any number of things from analyzing data, visualizing data to potentially even generating reports with R which is what R Markdown allows us to do. Now, CRAN has over 10,000 packages and this comprehensive range of packages available from CRAN is part of what makes R such a popular scripting language.
 
@@ -29,22 +29,22 @@ There are definitely one or two packages that would make your life with R a litt
 
 - In other words, the tidyverse is both a collection of R packages, and an approach to how to do data science effectively, and reproducibly with the R language.
 
-# Why use the Tidyverse?
+## Why use the Tidyverse?
 
 So what makes the tidyverse different? Well, the core of the tidyverse is developed by developers at RStudio. It's a company with an extremely good reputation including, for R package development. RStudio's own internal tools dependent on components of the tidyverse, helping to reassure us of the long term viability of the tidyverse ecosystem. Tidyverse is developed openly on GitHub, meaning users can track continuing development and if necessary, fork packages in the future if Rstudio themselves, stop updating them.
 
-# Strengths of Tidyverse
+## Strengths of Tidyverse
 
 What does the tidyverse provide us as end users or data scientists? Well, using tidyverse leads to advantages in the following main areas: 
 - Data importation
 - Data wrangling
 - Data visualization
 
-## Data import
+### Data import
 
 Let's look at each of those. `readr` completely blows away the base-R tools for importing rectangular data files like csv (comma-separated values) and tsv (tab-separated values) files. It's not only significantly faster than base-R but it's more intelligent. For instance, automatically converting dates to dates, times to times, and converting columns that should be numbers into numbers. And finally, it never ever imports columns of strings as factors. If you're already a base-R user, chances are you've spent hours of frustration because of this issue using base-R. **This section** includes importing data with `readr` as it's for general workhorse of most R users data import toolkit. The `readxl` library makes importing from excel files ridiculously simple allowing worksheets, individual cells, or even cell ranges to be targeted for import easily. The tidyverse also aims to fit into existing workflows. `haven` allows data to be imported from SAS, SPSS, and Stata. Now these three packages significantly decrease the time needed to massage data files into R. And help solve a number of common frustrations with base-R packages. But please note that `readr` is the only package of the three that is part of the core `tidyverse`. You need to separately load `readxl` and `haven` to access those libraries. 
 
-## Data wrangling
+### Data wrangling
 
 The tidyverse utilizes the pipe operator (%>%). This percentage greater than percentage thing to provide a logical framework for chaining together common data wrangling tasks. This makes code very faster to write and easier to read. There's **a chapter** dedicated to the pipe operator as it is mysterious magic to many R users. The tidyverse is designed around a concept of *tidydata*. The `tidyr` library is designed for reshaping and transforming your imported data into a structure ready to manipulate, model, and visualize with the tidyverse. `dplyr` is the library for sub-setting, filtering, summarizing, and generally wrangling your data. It also provides a number of tools for doing database-like operations for working on relational datasets. These packages used together form a core data processing component of the tidyverse. The operations you'll perform with these are both significantly faster and simpler to construct than simply using base-R. `ggplot2` provides a complete consistent and incredibly powerful grammar of graphics, allowing impressive static visualizations to be built with minimal effort. 
 
@@ -84,7 +84,7 @@ gapminder %>%
 
 And finally, there's the `shiny` library which allows us to build web applications using only the R language without knowing any html or javascript. And `shiny` allows us to use `htmlwidgets` to embed interactive charts inside of our web applications.
 
-# Maintain the Tidyverse
+## Maintain the Tidyverse
 
 So how do we go about maintaining the tidyverse? Well, remember that in order to use the tidyverse on our system we've installed three discrete things: R itself, RStudio, and the tidyverse collection of packages. To keep fully up to date with the tidyverse, unfortunately we really need to keep on top of all three of these things individually. So let's look at how we do that. 
 
