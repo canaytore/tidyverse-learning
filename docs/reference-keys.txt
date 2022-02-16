@@ -6,4 +6,3 @@ strengths-of-tidyverse
 data-import
 data-wrangling
 maintain-the-tidyverse
-the-pool-of-tears
