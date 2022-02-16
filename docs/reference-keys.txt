@@ -1,4 +1,10 @@
-down-the-rabbit-hole
-ddddd
+the-r-language
+r-packages
+what-is-tidyverse
+why-use-the-tidyverse
+strengths-of-tidyverse
+data-import
+data-wrangling
+maintain-the-tidyverse
 the-pool-of-tears
 a-caucus-race-and-a-long-tale

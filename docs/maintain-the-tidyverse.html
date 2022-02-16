@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Page not found | Tidyverse Learnings</title>
-  <meta name="description" content="Page not found | Tidyverse Learnings" />
+  <title>Chapter 6 Maintain the Tidyverse | Tidyverse Learnings</title>
+  <meta name="description" content="Chapter 6 Maintain the Tidyverse | Tidyverse Learnings" />
   <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Page not found | Tidyverse Learnings" />
+  <meta property="og:title" content="Chapter 6 Maintain the Tidyverse | Tidyverse Learnings" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Page not found | Tidyverse Learnings" />
+  <meta name="twitter:title" content="Chapter 6 Maintain the Tidyverse | Tidyverse Learnings" />
   
   
   
@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-
-
+<link rel="prev" href="strengths-of-tidyverse.html"/>
+<link rel="next" href="the-pool-of-tears.html"/>
 <script src="libs/header-attrs-2.11/header-attrs.js"></script>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
@@ -210,19 +210,23 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="page-not-found" class="section level1">
-<h1>Page not found</h1>
-<p>The page you requested cannot be found (perhaps it was moved or renamed).</p>
-<p>You may want to try searching to find the page's new location, or use
-the table of contents to find the page you are looking for.</p>
+<div id="maintain-the-tidyverse" class="section level1" number="6">
+<h1><span class="header-section-number">Chapter 6</span> Maintain the Tidyverse</h1>
+<p>So how do we go about maintaining the tidyverse? Well, remember that in order to use the tidyverse on our system we’ve installed three discrete things: R itself, RStudio, and the tidyverse collection of packages. To keep fully up to date with the tidyverse, unfortunately we really need to keep on top of all three of these things individually. So let’s look at how we do that.</p>
+<p>The process you need to go through to keep up to date with R is the most frustrating of all the three tools since there’s not a consistent way to do this from within RStudio. Base-R is updated approximately 4 times a year but there’s not a regular release cycle. I’d advise that you check every few months for a new version of R. If R console tells you there’s a newer version then type a <kbd>y</kbd> + <kbd>Enter</kbd> and this will launch you to your web browser to the downloads page for R for your operating system. When you’re there it’s really important to check the release date of that version of R. I thoroughly advise that you do not update R until the release is at least one month old. This is to give the package maintainers that you rely on enough time to update their packages to depend on this new version of R.</p>
+<p>So how about updating RStudio? Well, RStudio will automatically check whether there’s a new version of RStudio available when you open it up. Updates are typically released a few times a year and generally they include awesome new features that are of general interest. For instance support for new features in R markdown documents or simply making it easier to publish Shiny apps. I thoroughly recommend that as soon as RStudio tells you there’s a new version click update, it will take you to the RStudio website and allow you to download the new version.</p>
+<p>So how about keeping the tidyverse up to date? Well thankfully that’s quite simple. The constituent components of the tidyverse don’t have a regular update frequency but that doesn’t matter as we have the wonderful tidyverse update function which handles everything for us.</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="maintain-the-tidyverse.html#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tidyverse_update</span>()</span></code></pre></div>
+<p>In RStudio simply run the function tidyverse update, it will go away and check are there new versions or packages available, and if so it will grab those versions and install them ready for you to use. Now you might sometimes hear on the grapevine that there are new features available in the development versions of the tidyverse packages. So where do these development versions live? Well they all live on GitHub and you can install the development version of a tidyverse library using the dev tools library if necessary. But where is this grapevine of news about tidyverse? Well one of the best places to keep up to date with what’s going on in the tidyverse, and in R in general, is on Twitter. The core RStudio development team are actually very active here and the two hashtags that you want to look out for are rstats and tidyverse. So if you do want one of these development builds of a tidyverse package, as I mentioned, you use the dev tools library and the function install github. But how about if you find that the development version isn’t just working out for you, you want to return to the stable version? Well at any time simply use the function install.packages tidyverse and this will recover you to the crown version of all the libraries within the tidyverse.</p>
+
 </div>
             </section>
 
           </div>
         </div>
       </div>
-
-
+<a href="strengths-of-tidyverse.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="the-pool-of-tears.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -253,7 +257,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/canaytore/tidyverse-learning/edit/master/%s",
+"link": "https://github.com/canaytore/tidyverse-learning/edit/master/index.Rmd",
 "text": "Edit"
 },
 "history": {
@@ -261,7 +265,7 @@ gitbook.start({
 "text": null
 },
 "view": {
-"link": "https://github.com/canaytore/tidyverse-learning/blob/master/%s",
+"link": "https://github.com/canaytore/tidyverse-learning/blob/master/index.Rmd",
 "text": null
 },
 "download": null,
