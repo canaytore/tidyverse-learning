@@ -3,6 +3,6 @@ bookdown::gitbook:
   config:
     toc:
       before: |
-        <li><a href="./">Tidyverse Learning</a></li>
+        <li><a href="./">Tidyverse Learnings</a></li>
       after: |
         <li><a href="https://canaytore.github.io/" target="blank">Copyright &copy; Can Aytöre</a></li>
