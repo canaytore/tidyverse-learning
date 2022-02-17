@@ -166,22 +166,165 @@ The pipe operator is an incredibly important component of the modern R workflow.
 
 ## What is the %>% Operator
 
-Whenever you see percentage, greater than, percentage (%>%) in R code, you should pronounce it "pipe". The pipe operator is simply *Syntactic Sugar*, but it's incredibly popular syntactic sugar, to the extent that it's pretty much the workhorse of the tidyverse and HTML widgets, which is why it's so important to master for our uses. But what is syntactic sugar? Well, syntactic sugar is designed by developers to make code easier to read or to write for human beings. Typical use cases for syntactic sugar are: reducing the number of keystrokes needed to write code, or improving the "flow" of writing code, where "flow" simply means the stream of consciousness of the programmer. We want to minimize the amount we have to think about writing code and instead think about the task we're trying to achieve. In R, our programming tasks are typically about data manipulation. The pipe is excellent syntactic sugar for reducing the number of keypresses and emphasizing the flow of data in R. So the pipe operator is "syntactic sugar" for chaining operations together. For instance, this is piped into that, which is piped into one more thing, which is then piped into one last thing, and then piped into finished. Now let's look at a real example in R Studio. So I have R Studio open, and I'm going to create a new project in which we learn a little bit about pipes as sugar. So we're going to go to Projects in top right hand corner, New Project, we're going to select New Directory, we're going to create an empty project, we're going to make it on our desktop, and we're going to call it pipes as sugar. Now we're ready to create a script file, which we'll do with command shift N. We'll save this script file inside of our project, and we'll save that as pipes as sugar dot R. In line one, let's create a simple vector we'll call data, which stores the prime numbers up to 17. So, we'll call it data, we'll use the assignment operator, we'll open the vector, and we'll go one, three, five, seven, and 11, 13, and then 17. We will store this vector by running the code with command enter. We can see in our environment we have the value data. If we wanted to calculate the rolling differences between these numbers, we could write this using standard notation as follows: so I'll write diff data and hit command enter. And now we get the rolling differences between the numbers in our vector, but we could just as easily write this with a pipe. We could write data percentage, greater than, percentage, pipe, hit enter, a line is automatically indented, and then we could type diff, open close parentheses, and hit command enter. Now we get a warning from the R console that R Studio doesn't currently know about the pipe. It can't find the function percentage greater than percentage, and that's because it's syntactic sugar introduced by a package called magrittr. What we really should have done at the top of our script file is to load the tidyverse, as this also loads the pipe from magrittr. So let's do that. We'll go to line one, we'll enter a new line, and we'll type library, open parentheses, open quote, tidyverse, we'll run that code with command enter, we can see that the packages of tidyverse have been loaded, and now if we highlight line seven through six, and run the code, we can see we get the exact same as we would get if we were to run line four. Now, if we wanted to calculate the mean difference between the primes, it's really simple to add another operation to our pipe chain. We would simply write at the end of line seven, percentage, greater than, percentage, pipe, enter, mean. And now, if we hit command enter, our pipe chain is sent to the console, and we get the mean differences between the primes between one and 17. If we were to write this in standard notation, we would have to rewrite the code on line four, we would have to go to the beginning of the line, we would have to write mean, open parentheses, go to the end of the line, and then close parentheses. While this is technically fewer keypresses, we have had to rewrite our code. We don't have the steps in the operation we want to perform obvious within our code. So, in traditional R notation, expressions need to be rewritten for new operations to be added. If you need to move to the beginning of the line, and to the end of the line to add a closing parentheses. Whereas with the pipe operator, one can simply continue to chain together your thought process, and data processing tasks, without having to interrupt yourself to reorganize the code. That's because the pipe simply chains together operations.
+Whenever you see percentage, greater than, percentage (%>%) in R code, you should pronounce it "pipe". The pipe operator is simply *'Syntactic Sugar'*, and it's pretty much the workhorse of the `tidyverse` and `htmlwidgets`, which is why it's so important to master for our uses. But what is *Syntactic Sugar*? Well, it is designed by developers to make code easier to read or to write for humans. 
 
-## Identify where to use %>%
+Typical use cases for *Syntactic Sugar* are: 
+- reducing the number of keystrokes needed to write code
+- improving the "flow" of writing code, where "flow" simply means the stream of consciousness of the programmer. 
+
+We want to minimize the amount we have to think about writing code and instead think about the task we're trying to achieve. In R, our programming tasks are typically about data manipulation. The 'pipe' is excellent *Syntactic Sugar* for reducing the number of key presses and emphasizing the flow of data in R. So the pipe operator is *Syntactic Sugar* for chaining operations together.
+
+Now let's look at a real example in R Studio. Let's create a simple vector 'prime', which stores the prime numbers up to 17. If we wanted to calculate the rolling differences between these numbers, we could write this using standard notation as follows: 
+
+```{r message=FALSE, warning=FALSE}
+prime <- c(1, 3, 5, 7, 11, 13, 17)
+diff(prime) # calculates the differences
+```
+
+Now we get the rolling differences between the numbers in our vector, but we could just as easily write this with a pipe. 
+
+```{r warning=FALSE}
+library(tidyverse)
+prime %>%
+  diff()
+```
+
+In order to introduce pipe operator into R, what we really should do at the top of our script file is to load the `tidyverse`, as this also loads the pipe from `magrittr`. We can see we get the exact same as we would get. 
+
+Now, if we wanted to calculate the mean difference between the primes, it's really simple to add another operation to our pipe chain. 
+
+```{r message=FALSE, warning=FALSE}
+prime %>%
+  diff() %>%
+  mean()
+```
+
+We get the mean differences between the primes between 1 and 17. If we were to write this in standard notation, we would have to rewrite the code. 
+
+```{r warning=FALSE}
+mean(diff(prime))
+```
+
+While this is technically fewer key presses, we have had to rewrite our code. We don't have the steps in the operation we want to perform obvious within our code. So, in traditional R notation, expressions need to be rewritten for new operations to be added. If you need to move to the beginning of the line, and to the end of the line to add a closing parentheses. Whereas with the pipe operator, one can simply continue to chain without having to interrupt yourself to reorganize the code. That's because the pipe simply chains together operations. Understanding how the pipe operator works is important to master modern R, including the `tidyverse` and the `htmlwidgets`.
 
 
 ## Significance of %>%
 
+It's important to understand the significance of periods, or full stops, in pipe expressions, as they're used fairly frequently. We've established that pipes are very useful syntactic sugar that makes it easy to chain together operations, and that they're ubiquitous in both the `tidyverse` and in the construction of `htmlwidget` visualizations, but sometimes you know better than the pipe operator. You realize the left-hand side of the pipe doesn't belong in the first argument in the right-hand side of the pipe. It needs to be inserted somewhere else, and that's what a period allows you to do. So let's look at an example of that. 
 
-## Alternate options to %>%
+```{r message=FALSE, warning=FALSE}
+library(praise) # includes random texts
+rep(praise(), 10)
+```
 
+I used the function rep, which repeats the first argument the number of times specified in the second argument. So, I get praise run 10 times. What the praise library does is it randomly generates a piece of praise, so if I run this again, I'll get something else.
+
+So, how about if I wanted to generate a vector of praise which was as long as the mean of the differences of my vector, prime, just as an example. Well, I could write it like this using native R:
+
+```{r message=FALSE, warning=FALSE}
+prime <- c(1, 3, 5, 7, 11, 13, 17)
+rep(praise(), mean(diff(prime)))
+```
+
+But how about if I wanted to write this using pipes? Well, I first pipe my vector into the operation diff to calculate the differences between my vector arguments, then I pipe in mean, so I get the mean difference, which is two and a third, and then I pipe this into the rep function, but the first argument of rep should be the thing which I'm repeating, as opposed to the number of times I'm repeating it. If I type this, I'm going to get an error.
+
+```{r echo=TRUE, eval=FALSE}
+library(tidyverse)
+prime %>%
+  diff() %>%
+  mean() %>%
+  rep(praise())
+```
+```{r echo=TRUE, eval=FALSE}
+Error in rep(., praise()) : invalid 'times' argument
+```
+
+I get told that the times argument is invalid. You can have a look at the documentation for rep by selecting the name of the function and pressing F1, or running the following code. 
+
+```{r echo=TRUE, eval=FALSE}
+?rep
+```
+
+We see the first argument of rep should be *x*, the thing that should be repeated, and the second argument should be times, so what I'm effectively getting 'times = praise', which is invalid R code. We need to use the period to suck the left-hand side of the pipe into the appropriate position in the right-hand side of the pipe. So the period will suck in the left-hand side of the pipe away from the first argument into the second argument. 
+
+```{r message=FALSE, warning=FALSE}
+prime %>%
+  diff() %>%
+  mean() %>%
+  rep(praise(), .)
+```
+
+We got a vector of two bits of praise. This period is being pulled into the second argument, which is the times argument. If we didn't want the *same* praise each time, we could rewrite this as follows with the replicate function, and the argument is no longer times, it's 'n'. 
+
+```{r message=FALSE, warning=FALSE}
+prime %>%
+  diff() %>%
+  mean() %>%
+  replicate(praise(), n = .)
+```
+
+I get different praise each time. So we used a very trivial example to demonstrate the use of periods in pipes, but there's a very important use case for the period in tidyverse; Extracting data from data frames as vectors. 
+
+As an example of `midwest` dataset, we select from that the column state, we ask for the unique values of the state column.
+
+```{r message=FALSE, warning=FALSE}
+midwest %>%
+  select(state) %>%
+  unique()
+```
+
+This returns me a tibble, or a data frame. If I wanted this returned as a vector, I need to use the period to say this is the thing I want, and I want the first column from that data frame, and that returns me a vector. 
+
+```{r message=FALSE, warning=FALSE}
+midwest %>%
+  select(state) %>%
+  unique() %>%
+  .[[1]]
+```
+
+If you want to more thoroughly understand the slightly odd indexing behavior of R where indexing is extracting components of an object using square brackets, then I thoroughly recommend that you look into Hadley Wickham's example with pepper shakers that you can see linked [here](https://r4ds.had.co.nz/vectors.html#lists-of-condiments).
 
 
 # Importing, Modifying, and Filtering Data
 
+## Separate raw and clean data folders
+
+Cleaning or tidying data is the most important first step in starting any data analysis, modeling, or even visualization project. At the beginning of our analysis, we have *raw data* from our surveys, experiments, instruments, or of course, hastily put together web-scraping operations. And after cleaning our data, we have *tidy data* which we can easily work and operate on. So, we have *raw data* which is often poorly unstructured and we have *tidy data* which is clean and well structured, ready for analysis. 
+
+There's a great quote from Hadley Wickham on the subject: "Tidy datasets are all alike but every messy dataset is messy in its own way." This is why data science is often said to be 80% data cleaning and 20% doing fun stuff, but because so much effort has to be put into tidying data, it is crucial that you do not throw away the tidying process. It's a crucial component of your analysis and required for fully reproducible research or analysis. 
+
+So, how should we structure our projects to contain both raw and tidy data? Well here's a fictitious R project called *'Controversial-Results'* that has been designed so that others can completely replicate the results.
+
+![](Capture01.JPG)
+
+There's a folder in here called *'data-raw'* which contains the raw or messy data in the *'telemetry.csv'* file, and the code for tidying and cleaning the data is stored within the *'data-tidying.R'* file. At the bottom of this code file, the read R library from the tidyverse is used to write out a tidied version of this data called *'research-data.csv'* and this is stored inside of a *'data'* folder. Then in the project root directory, we see there's a *'data-processing.R'* file and a *'generate-report.Rmd'* file which only operates on a tidy data in the *'data folder'*. 
+
+If there's any raw data which needs to be processed, it's in data-raw. There's a file there which tidies it together and outputs it into a data folder which is where we have a nice, tidy data which we then use in our data-processing files.
+
+## Import .xlsx files with readxl in R
+
+## Import .csv files with readr into R
+
+## Is it a data frame or tibble?
+
+## Select and Filter Data
+
+## Convert strings to dates with mutate
+
+## Separating columns into multiple columns
+
+## Filter out NA values
+
+## Export .csv files with readr
+
+## Export .rdata objects for later use
 
 
+
+# Summarizing and Tabulating Data in `tidyverse`
+
+
+# Wide and Long Data
 
 
 
