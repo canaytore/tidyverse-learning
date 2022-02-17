@@ -1,3 +1,7 @@
+introduction
+aim
+motivation
+get-started-with-tidyverse
 the-r-language
 r-packages
 what-is-tidyverse
@@ -6,4 +10,15 @@ strengths-of-tidyverse
 data-import
 data-wrangling
 maintain-the-tidyverse
-references
+being-tidy-with-rstudio-projects
+why-should-we-use-projects-in-rstudio
+easier-import
+improved-reproducibility
+improved-collaboration
+create-a-new-project
+introducing-the-operator
+what-is-the-operator
+identify-where-to-use
+significance-of
+alternate-options-to
+importing-modifying-and-filtering-data

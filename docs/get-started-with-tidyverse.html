@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Page not found | Tidyverse Learnings</title>
-  <meta name="description" content="Page not found | Tidyverse Learnings" />
+  <title>Chapter 2 Get Started with tidyverse | Tidyverse Learnings</title>
+  <meta name="description" content="Chapter 2 Get Started with tidyverse | Tidyverse Learnings" />
   <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Page not found | Tidyverse Learnings" />
+  <meta property="og:title" content="Chapter 2 Get Started with tidyverse | Tidyverse Learnings" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Page not found | Tidyverse Learnings" />
+  <meta name="twitter:title" content="Chapter 2 Get Started with tidyverse | Tidyverse Learnings" />
   
   
   
@@ -30,8 +30,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   <link rel="shortcut icon" href="favicon.jpg" type="image/x-icon" />
-
-
+<link rel="prev" href="index.html"/>
+<link rel="next" href="what-is-tidyverse.html"/>
 <script src="libs/header-attrs-2.11/header-attrs.js"></script>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
@@ -241,19 +241,35 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="page-not-found" class="section level1">
-<h1>Page not found</h1>
-<p>The page you requested cannot be found (perhaps it was moved or renamed).</p>
-<p>You may want to try searching to find the page's new location, or use
-the table of contents to find the page you are looking for.</p>
+<div id="get-started-with-tidyverse" class="section level1" number="2">
+<h1><span class="header-section-number">Chapter 2</span> Get Started with <code>tidyverse</code></h1>
+<div id="the-r-language" class="section level2" number="2.1">
+<h2><span class="header-section-number">2.1</span> The R Language</h2>
+<p>The R language is an extremely popular scripting language used by millions of people around the world. Primarily, it’s used for data analysis, modeling, and visualization. Many people think of R as statistical software, but it’s fundamentally not and it’s a little bit upsetting when people say that. R is programming language that has been adopted and curated by people interested in doing data science as flexibly as possible.</p>
+<p>R lives and breathes at the comprehensive R archive network, abbreviated to CRAN. When you download R from CRAN, you’ve actually installed Base-R. Base-R includes all of the necessary machinery for your computer to be able to run R code. It also installs standard R packages like <code>stats</code>, <code>utils</code> and <code>graphics</code>. These packages allow you to start using R immediately on your machine. In order for data manipulation, using Base R is sufficient most of the time. The Base R way of doing things involves a code that looks very much like this;</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="get-started-with-tidyverse.html#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(iris[iris<span class="sc">$</span>Species <span class="sc">==</span> <span class="st">&quot;virginica&quot;</span>,])</span></code></pre></div>
+<pre><code>##     Sepal.Length Sepal.Width Petal.Length Petal.Width   Species
+## 101          6.3         3.3          6.0         2.5 virginica
+## 102          5.8         2.7          5.1         1.9 virginica
+## 103          7.1         3.0          5.9         2.1 virginica
+## 104          6.3         2.9          5.6         1.8 virginica
+## 105          6.5         3.0          5.8         2.2 virginica
+## 106          7.6         3.0          6.6         2.1 virginica</code></pre>
+<p>First to access to ‘species’ column and then we have a double equals to say ‘species’ is equivalent to ‘virginica’ and then we have a comma to say we want all of the columns and then the final closing square bracket.</p>
+</div>
+<div id="r-packages" class="section level2" number="2.2">
+<h2><span class="header-section-number">2.2</span> R Packages</h2>
+<p>It’s possible to do every single thing you could possibly imagine with Base-R because it is a true and complete programming language but you would have to write a lot of code yourself. Most people jump straight into using R packages to make their life easier and more reproducible, so what are R packages? R packages are self-contained collections of functions and/or datasets that provide us with the ability to do any number of things from analyzing data, visualizing data to potentially even generating reports with R which is what R Markdown allows us to do. Now, CRAN has over 10,000 packages and this comprehensive range of packages available from CRAN is part of what makes R such a popular scripting language.</p>
+<p>It’s a fact of programming and scripting but building everything yourself from scratch is time consuming and more than likely, hugely error prone, this is why R users depend on packages. Using packages makes it easier to start working on a new project in R. Packages can make collaborating with others on R projects easier, as you can be ensured everyone is using the same code base.</p>
+</div>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-
-
+<a href="index.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="what-is-tidyverse.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

@@ -5,8 +5,8 @@
 \documentclass[
 ]{article}
 \title{Tidyverse Learnings}
-\author{Can Aytöre}
-\date{2022-02-17}
+\author{Author: \href{https://github.com/canaytore/}{Can Aytöre}}
+\date{Last Update: 2022-02-17}
 
 \usepackage{amsmath,amssymb}
 \usepackage{lmodern}
@@ -41,7 +41,7 @@
 \IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
 \hypersetup{
   pdftitle={Tidyverse Learnings},
-  pdfauthor={Can Aytöre},
+  pdfauthor={Author: Can Aytöre},
   hidelinks,
   pdfcreator={LaTeX via pandoc}}
 \urlstyle{same} % disable monospaced font for URLs
@@ -126,8 +126,20 @@
 \setcounter{tocdepth}{2}
 \tableofcontents
 }
+\hypertarget{introduction}{%
+\section{Introduction}\label{introduction}}
+
+\hypertarget{aim}{%
+\subsection{Aim}\label{aim}}
+
+\hypertarget{motivation}{%
+\subsection{Motivation}\label{motivation}}
+
+\hypertarget{get-started-with-tidyverse}{%
+\section{\texorpdfstring{Get Started with \texttt{tidyverse}}{Get Started with tidyverse}}\label{get-started-with-tidyverse}}
+
 \hypertarget{the-r-language}{%
-\section{The R Language}\label{the-r-language}}
+\subsection{The R Language}\label{the-r-language}}
 
 The R language is an extremely popular scripting language used by millions of people around the world. Primarily, it's used for data analysis, modeling, and visualization. Many people think of R as statistical software, but it's fundamentally not and it's a little bit upsetting when people say that. R is programming language that has been adopted and curated by people interested in doing data science as flexibly as possible.
 
@@ -253,9 +265,97 @@ So how about keeping the tidyverse up to date? Well thankfully that's quite simp
 \end{Highlighting}
 \end{Shaded}
 
-In RStudio simply run the function tidyverse update, it will go away and check are there new versions or packages available, and if so it will grab those versions and install them ready for you to use. Now you might sometimes hear on the grapevine that there are new features available in the development versions of the tidyverse packages. So where do these development versions live? Well they all live on GitHub and you can install the development version of a tidyverse library using the dev tools library if necessary. But where is this grapevine of news about tidyverse? Well one of the best places to keep up to date with what's going on in the tidyverse, and in R in general, is on Twitter. The core RStudio development team are actually very active here and the two hashtags that you want to look out for are rstats and tidyverse. So if you do want one of these development builds of a tidyverse package, as I mentioned, you use the dev tools library and the function install github. But how about if you find that the development version isn't just working out for you, you want to return to the stable version? Well at any time simply use the function install.packages tidyverse and this will recover you to the crown version of all the libraries within the tidyverse.
+In RStudio simply run the function tidyverse update, it will go away and check are there new versions or packages available, and if so it will grab those versions and install them ready for you to use. Now you might sometimes hear on the grapevine that there are new features available in the development versions of the tidyverse packages. So where do these development versions live? Well they all live on GitHub and you can install the development version of a tidyverse library using the \texttt{devtools} library, if necessary. But where is this grapevine of news about tidyverse? Well, one of the best places to keep up to date with what's going on in the tidyverse, and in R in general, is on \href{https://twitter.com/tidyverse}{Twitter}. The core RStudio development team are actually very active here and the two hashtags that you want to look out for are \texttt{\#rstats} and \texttt{\#tidyverse}.
+
+So if you do want one of these development builds of a tidyverse package, you could use the \texttt{devtools} library and the function \emph{install\_github}.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(devtools)}
+\FunctionTok{install\_github}\NormalTok{(}\StringTok{"tidyverse/package\_name"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+But how about if you find that the development version isn't just working out for you, you want to return to the stable version? Well, at any time simply use the function \emph{install.packages} and this will recover you to the crown version of all the libraries within the tidyverse.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{install.packages}\NormalTok{(}\StringTok{"tidyverse"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{being-tidy-with-rstudio-projects}{%
+\section{Being Tidy with RStudio Projects}\label{being-tidy-with-rstudio-projects}}
+
+\hypertarget{why-should-we-use-projects-in-rstudio}{%
+\subsection{Why should we use projects in RStudio?}\label{why-should-we-use-projects-in-rstudio}}
+
+\hypertarget{easier-import}{%
+\subsubsection{Easier import}\label{easier-import}}
+
+Projects are a powerful tool in RStudio for developing reproducible code, whether for individual data analyses, data-driven reports, or even developing your own packages. Projects also get you ready from the beginning of a collaborate with you, for instance, on GitHub. But the main advantage of projects is that they make your life easier when \emph{importing data}. If you've used R before, you'll be familiar with the concept of a \textbf{working directory}. If not, then a working directory is simply the place where R is currently looking for files. If you're not using projects, then you'll likely have seen this at the top of your script files.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{setwd}\NormalTok{(}\StringTok{"computer\_name/.../data\_folder"}\NormalTok{)  }\CommentTok{\# Path to data folder}
+\end{Highlighting}
+\end{Shaded}
+
+Your data files live in that folder. But then if you send your code to others, they'll need to change their path to include their own computer's name and whatever long path they have, as well. Also, you'll probably actually forget to send them the data file in the first place with a script file. Projects completely negate the need to do this, because projects make the whole concept of working with files and their paths easier. You'll be actively discouraged from the terrible practice of using absolute file paths.
+
+\hypertarget{improved-reproducibility}{%
+\subsubsection{Improved Reproducibility}\label{improved-reproducibility}}
+
+\textbf{Reproducibility} is a hot topic in research. How can we reassure others that results of our analyses or conclusions about research data are accurate, without providing the necessary code and explanations of our methodologies? R is an excellent toolkit for ensuring reproducible research, thanks to its open source underbelly. Anybody can go and look at the source code for base R, as well as the packages that you rely on. Organizing your own research into projects minimizes the work others need to do to reproduce your results.
+
+\includegraphics{Capture01.JPG}
+
+Above, we see an exceedingly clean R project. The folder is called \emph{`controversial-results'}, and we can see it contains both the raw telemetry behind our research in a folder called \emph{`data-raw'}, and a tidied form of the data in a folder called \emph{`data'}. Then the process for data wrangling is kept within the \emph{`data-processing.R'} file, and finally, there's an R markdown file \emph{`(.Rmd)'} which is used to generate \emph{`The Controversial Report.pdf'} which we communicate to others. Anyone can reproduce this analysis by simply obtaining the \emph{`controversial-results'} folder, opening up \textbf{\emph{`controversial-results.RProj'}} file in RStudio, and then running the \emph{`data-processing.R'} file. Finally, projects make collaboration much easier, because projects keep all your files together.
+
+\hypertarget{improved-collaboration}{%
+\subsubsection{Improved Collaboration}\label{improved-collaboration}}
+
+They're perfectly designed for version control systems, like \emph{Git}. All of the tidyverse R libraries are developed in \emph{GitHub} and available as projects. So \href{https://github.com/tidyverse/haven}{here's} a repository for \texttt{haven} with a great README telling me how the package should be used and what it's for, but if I want to grab the whole package, all I need to do is go to the green button and select `Download ZIP', navigate to my downloads folder, and then inside of the \emph{haven-master} folder, you'll find a \emph{.Rproj} file. And if I open that up, it opens up Rstudio, and I'm ready to begin my own modifications of the \texttt{haven} package, if I wanted to.
+
+Projects negate the need for setting working directories, as everything becomes a relative file path to the .Rproj-containing folder. Projects improve both reproducibility and collaboration. If you want others to work with you, the best thing you can do is set up an RStudio project and host it on a version control system like GitHub.
+
+\hypertarget{create-a-new-project}{%
+\subsection{Create a new Project}\label{create-a-new-project}}
+
+tbu..
+
+\hypertarget{introducing-the-operator}{%
+\section{Introducing the \%\textgreater\% Operator}\label{introducing-the-operator}}
+
+The pipe operator is an incredibly important component of the modern R workflow.
+
+\hypertarget{what-is-the-operator}{%
+\subsection{What is the \%\textgreater\% Operator}\label{what-is-the-operator}}
+
+Whenever you see percentage, greater than, percentage (\%\textgreater\%) in R code, you should pronounce it ``pipe''. The pipe operator is simply \emph{Syntactic Sugar}, but it's incredibly popular syntactic sugar, to the extent that it's pretty much the workhorse of the tidyverse and HTML widgets, which is why it's so important to master for our uses. But what is syntactic sugar? Well, syntactic sugar is designed by developers to make code easier to read or to write for human beings. Typical use cases for syntactic sugar are: reducing the number of keystrokes needed to write code, or improving the ``flow'' of writing code, where ``flow'' simply means the stream of consciousness of the programmer. We want to minimize the amount we have to think about writing code and instead think about the task we're trying to achieve. In R, our programming tasks are typically about data manipulation. The pipe is excellent syntactic sugar for reducing the number of keypresses and emphasizing the flow of data in R. So the pipe operator is ``syntactic sugar'' for chaining operations together. For instance, this is piped into that, which is piped into one more thing, which is then piped into one last thing, and then piped into finished. Now let's look at a real example in R Studio. So I have R Studio open, and I'm going to create a new project in which we learn a little bit about pipes as sugar. So we're going to go to Projects in top right hand corner, New Project, we're going to select New Directory, we're going to create an empty project, we're going to make it on our desktop, and we're going to call it pipes as sugar. Now we're ready to create a script file, which we'll do with command shift N. We'll save this script file inside of our project, and we'll save that as pipes as sugar dot R. In line one, let's create a simple vector we'll call data, which stores the prime numbers up to 17. So, we'll call it data, we'll use the assignment operator, we'll open the vector, and we'll go one, three, five, seven, and 11, 13, and then 17. We will store this vector by running the code with command enter. We can see in our environment we have the value data. If we wanted to calculate the rolling differences between these numbers, we could write this using standard notation as follows: so I'll write diff data and hit command enter. And now we get the rolling differences between the numbers in our vector, but we could just as easily write this with a pipe. We could write data percentage, greater than, percentage, pipe, hit enter, a line is automatically indented, and then we could type diff, open close parentheses, and hit command enter. Now we get a warning from the R console that R Studio doesn't currently know about the pipe. It can't find the function percentage greater than percentage, and that's because it's syntactic sugar introduced by a package called magrittr. What we really should have done at the top of our script file is to load the tidyverse, as this also loads the pipe from magrittr. So let's do that. We'll go to line one, we'll enter a new line, and we'll type library, open parentheses, open quote, tidyverse, we'll run that code with command enter, we can see that the packages of tidyverse have been loaded, and now if we highlight line seven through six, and run the code, we can see we get the exact same as we would get if we were to run line four. Now, if we wanted to calculate the mean difference between the primes, it's really simple to add another operation to our pipe chain. We would simply write at the end of line seven, percentage, greater than, percentage, pipe, enter, mean. And now, if we hit command enter, our pipe chain is sent to the console, and we get the mean differences between the primes between one and 17. If we were to write this in standard notation, we would have to rewrite the code on line four, we would have to go to the beginning of the line, we would have to write mean, open parentheses, go to the end of the line, and then close parentheses. While this is technically fewer keypresses, we have had to rewrite our code. We don't have the steps in the operation we want to perform obvious within our code. So, in traditional R notation, expressions need to be rewritten for new operations to be added. If you need to move to the beginning of the line, and to the end of the line to add a closing parentheses. Whereas with the pipe operator, one can simply continue to chain together your thought process, and data processing tasks, without having to interrupt yourself to reorganize the code. That's because the pipe simply chains together operations.
+
+\hypertarget{identify-where-to-use}{%
+\subsection{Identify where to use \%\textgreater\%}\label{identify-where-to-use}}
+
+\hypertarget{significance-of}{%
+\subsection{Significance of \%\textgreater\%}\label{significance-of}}
+
+\hypertarget{alternate-options-to}{%
+\subsection{Alternate options to \%\textgreater\%}\label{alternate-options-to}}
+
+\hypertarget{importing-modifying-and-filtering-data}{%
+\section{Importing, Modifying, and Filtering Data}\label{importing-modifying-and-filtering-data}}
 
 \hypertarget{references}{%
-\subsection{References}\label{references}}
+\section*{References}\label{references}}
+\addcontentsline{toc}{section}{References}
+
+\hypertarget{appendices}{%
+\section*{Appendices}\label{appendices}}
+\addcontentsline{toc}{section}{Appendices}
+
+\hypertarget{about-author}{%
+\subsection*{About Author}\label{about-author}}
+\addcontentsline{toc}{subsection}{About Author}
 
 \end{document}
