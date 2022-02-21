@@ -37,7 +37,7 @@ jobs:
       - name: install packages
         run: Rscript -e 'install.packages(c("rmarkdown","bookdown","tidyverse","gapminder","highcharter","devtools","praise"))'
       - name: Render index to all types
-        run: Rscript -e 'rmarkdown::render("index.Rmd", output_format = "html")'
+        run: Rscript -e 'rmarkdown::render("index.Rmd", output_format = "html_document")'
       - name: GitHub push
         uses: actions-js/push@master
         with:
