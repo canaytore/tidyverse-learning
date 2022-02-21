@@ -1,6 +1,6 @@
 on:
   schedule:
-    - cron: */2 * * * *   #0 0 * * *   #At the end of every day
+    - cron: */2 * * * *
    
 jobs:
   render:
