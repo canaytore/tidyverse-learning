@@ -36,7 +36,7 @@ jobs:
 #            here..
       - name: install packages
         uses: 
-        run: Rscript -e 'install.packages(c("rmarkdown","tidyverse","gapminder","highcharter","devtools","praise"))'
+        run: Rscript -e 'install.packages(c("rmarkdown","bookdown","tidyverse","gapminder","highcharter","devtools","praise"))'
       - name: Render index to all types
         run: Rscript -e 'rmarkdown::render("index.Rmd", output_format = "all")'
       - name: GitHub push
