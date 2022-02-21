@@ -1,22 +1,47 @@
+name: daily routine
+
 on:
   schedule:
-    - cron: "*/1 * * * *"
-   
+    - cron: "*/5 * * * *" # "0 0 * * *" for at every end of the day
+#  push:
+#    branches:
+#      - master
+#  pull_request:
+#    branches:
+#      - master
+      
 jobs:
-  render:
-    name: Render my document
+  build:
+    name: build my document
     runs-on: macOS-latest
     steps:
       - uses: actions/checkout@v2
-      - uses: r-lib/actions/setup-r@v1
+#      with:
+#          persist-credentials: false # otherwise, the token used is the GITHUB_TOKEN, instead of your personal access token.
+#          fetch-depth: 0 # otherwise, there would be errors pushing refs to the destination repository.
+#          ref: branch-name # https://stackoverflow.com/a/58800550/3608936
+#      - run: echo "I've checked out the branch-name"
+      - name: setup R
+        uses: r-lib/actions/setup-r@v1
+#        with:
+#          r-version: "4.1.0"
       - uses: r-lib/actions/setup-pandoc@v1
       - uses: r-lib/actions/setup-tinytex@v1
-      - name: Install rmarkdown
-        run: Rscript -e 'install.packages("rmarkdown")'
-      - name: Render my document to all types
+#      - name: Install dependencies
+#        uses: r-lib/actions/setup-r-dependencies@v1
+#        with:
+#          cache-version: 2
+#          extra-packages: |
+#            devtools
+#            here..
+      - name: install packages
+        uses: 
+        run: Rscript -e 'install.packages(c("rmarkdown","tidyverse","gapminder","highcharter","devtools","praise"))'
+      - name: Render index to all types
         run: Rscript -e 'rmarkdown::render("index.Rmd", output_format = "all")'
-      - name: Commit results
-        run: |
-          git add index*
-          git commit -m 'Re-build index' || echo "No changes to commit"
-          git push origin || echo "No changes to commit"
+      - name: GitHub push
+        uses: actions-js/push@master
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          message: "Rmd update"
+          branch: "main"
