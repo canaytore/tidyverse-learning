@@ -2,7 +2,7 @@ name: daily routine
 
 on:
   schedule:
-    - cron: "0 0 * * *" # "0 0 * * *" for at every end of the day
+    - cron: "0 0 * * *"  # "0 0 * * *" for at every end of the day
 #  push:
 #    branches:
 #      - master
